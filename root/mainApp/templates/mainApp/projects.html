@@ -1,6 +1,19 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>project Template</h1>
+<h1>projects Template</h1>
+{% if number > 5 %}
+    {{msg}}
+{% endif %}
+
+<hr>
+
+{% for p in projectlist %}
+    <li>{{p.title}} --- {{p.description}}</li>
+{% endfor %}
+
+
 {% endblock content %}
+
+
 
