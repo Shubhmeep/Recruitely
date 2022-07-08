@@ -9,7 +9,7 @@
 <hr>
 
 {% for p in projectlist %}
-    <li>{{p.title}} --- {{p.description}}</li>
+    <li>Title : <a href = "{% url 'singleproject' p.id %}">{{p.title}}</a> --- {{p.description}}</li>
 {% endfor %}
 
 
