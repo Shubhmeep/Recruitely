@@ -32,5 +32,15 @@ def createProject(request):
     return render(request,"mainApp/project_form.html",context)
 
 
-def updateProject(request):
-    pass
+def updateProject(request,pk):
+    projectlist = pp.objects.get(id=pk)
+    forms = ProjectForm(instance=projectlist)
+
+
+    if request.method == 'POST':
+        forms = ProjectForm(request.POST,instance = projectlist)
+        if forms.is_valid():
+            forms.save()
+            return redirect('projects')
+    context = {'form':forms}
+    return render(request,"mainApp/project_form.html",context)
