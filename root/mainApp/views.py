@@ -1,21 +1,10 @@
 from re import L
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from matplotlib.style import context
 from numpy import number
 from mainApp.models import project as pp
-project_list = [
-    {'id':'1',
-    'title':"Ecommerce Website",
-    'description':'Fully functional ecommerce website'},
-    { 'id':'2',
-    'title':"Portfolio Website",
-    'description':'This wasaproject whereIbuilt out my portfolio'},
-    {'id':'3',
-    'title':"Social Network",
-    'description':'Awesome open source projectIam still working on'}
-]
-    
-   
+from .forms import ProjectForm
     
 # Create your views here.
 def projects(request):
@@ -28,5 +17,20 @@ def mainpage(request):
 
 def project(request,pk):
     projectlist = pp.objects.get(id=pk)
-   
-    return render(request,'mainApp/single-project.html',{'project':projectlist})
+    tags = projectlist.tags.all()
+    return render(request,'mainApp/single-project.html',{'project':projectlist,'tags':tags})
+
+
+def createProject(request):
+    forms = ProjectForm()
+    if request.method == 'POST':
+        forms = ProjectForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('projects')
+    context = {'form':forms}
+    return render(request,"mainApp/project_form.html",context)
+
+
+def updateProject(request):
+    pass
