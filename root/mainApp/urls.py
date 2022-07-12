@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     path('',views.projects,name="projects"),
     #path('',views.mainpage,name="mainpage"),
-    path('project/<int:pk>/',views.project,name="singleproject"),
+    path('project/<str:pk>/',views.project,name="singleproject"),
 
 ]
