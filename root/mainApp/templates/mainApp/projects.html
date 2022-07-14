@@ -6,7 +6,7 @@
 <hr>
 
 {% for p in projectlist %}
-    <li>Title : <a href = "{% url 'singleproject' p.id %}">{{p.title}}</a> --- {{p.description}} --- {{p.created}}  ---  <a href = "{% url 'update-project' p.id %}"> edit </a></li>
+    <li>Title : <a href = "{% url 'singleproject' p.id %}">{{p.title}}</a> --- {{p.description}} --- {{p.created}}  ---  <a href = "{% url 'update-project' p.id %}"> edit </a> --- <a href = "{% url 'delete-project' p.id %}"> Delete </a></li>
     
 {% endfor %}
 
