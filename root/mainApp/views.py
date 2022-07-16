@@ -44,5 +44,10 @@ def updateProject(request,pk):
     context = {'form':forms}
     return render(request,"mainApp/project_form.html",context)
 
-def deleteProject(requesst,pk):
-    pass
+def deleteProject(request,pk):
+    project = pp.objects.get(id=pk)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('projects')
+    context = {'object':project}
+    return render(request, "mainApp/delete_object.html",context)

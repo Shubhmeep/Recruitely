@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{{% block content %}
+
+    <form method="POST"> 
+        {% csrf_token %}
+        <p> are you sure u want to delete ? </p>
+        <a name="" id="" class="btn btn-primary" href="{% url 'projects' %}" role="button"> Go back </a>
+        <input type='submit' value="confirm">
+           
+    </form>
+
+{% endblock content %}}
