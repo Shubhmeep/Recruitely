@@ -1,3 +1,4 @@
+from email.policy import default
 from unicodedata import name
 import uuid
 from django.db import models
@@ -6,6 +7,7 @@ import uuid
 class project(models.Model):
     id = models.UUIDField(default=uuid.uuid4,primary_key=True,unique=True,editable=False)
     title = models.CharField(max_length=200)
+    featured_image = models.ImageField(null=True,blank=True,default = "default.jpg" )
     description = models.TextField(null=True,blank=True)
     demo_link = models.CharField(max_length=200)
     source_link = models.CharField(max_length=200)

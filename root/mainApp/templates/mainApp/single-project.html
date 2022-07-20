@@ -3,6 +3,7 @@
 
 {% block content %}
     <h1>{{project.title}}</h1>
+    <img src="{{ project.featured_image.url }}" style="max-width:500px;">
     <p>{{project.created}}</p>
     {% for i in tags %}
         <span style="border:1px solid grey">{{i}}</span>

@@ -24,7 +24,7 @@ def project(request,pk):
 def createProject(request):
     forms = ProjectForm()
     if request.method == 'POST':
-        forms = ProjectForm(request.POST)
+        forms = ProjectForm(request.POST,request.FILES)  #request.FILES for image input
         if forms.is_valid():
             forms.save()
             return redirect('projects')
@@ -37,7 +37,7 @@ def updateProject(request,pk):
     forms = ProjectForm(instance=projectlist)
 
     if request.method == 'POST':
-        forms = ProjectForm(request.POST,instance = projectlist)
+        forms = ProjectForm(request.POST,request.FILES,instance = projectlist)
         if forms.is_valid():
             forms.save()
             return redirect('projects')
