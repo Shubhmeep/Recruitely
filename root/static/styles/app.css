@@ -41,8 +41,8 @@ img {
   align-items: center;
 }
 
-.header__logo > img {
-  height: 3.8rem;
+.header__logo{
+  height: 4rem;
  
 }
 
@@ -50,12 +50,13 @@ img {
   display: inline-flex;
   align-items: center;
   list-style: none;
-  gap: 6.5rem;
+  gap: 6rem;
 }
 
 .header__menuItem > a {
   color: var(--color-light);
   font-weight: 300;
+  width: 10rem;
 }
 
 .toggle-menu > span {
