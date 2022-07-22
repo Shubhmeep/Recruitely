@@ -1,6 +1,6 @@
 from email.policy import default
 from unicodedata import name
-import uuid
+
 from django.db import models
 import uuid
 # Create your models here.
