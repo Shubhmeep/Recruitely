@@ -3,8 +3,10 @@ from unicodedata import name
 
 from django.db import models
 import uuid
+from users.models import profile
 # Create your models here.
 class project(models.Model):
+    owner = models.ForeignKey(profile,null=True,blank=True,on_delete=models.SET_NULL)
     id = models.UUIDField(default=uuid.uuid4,primary_key=True,unique=True,editable=False)
     title = models.CharField(max_length=200)
     featured_image = models.ImageField(null=True,blank=True,default = "default.jpg" )

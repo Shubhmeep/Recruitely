@@ -5,6 +5,7 @@ import uuid
 # Create your models here.
 
 class profile(models.Model):
+    username = models.CharField(max_length=200,null=True,blank=True)
     id = models.UUIDField(default=uuid.uuid4,primary_key=True,unique=True,editable=False)
     user = models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=True)
     name = models.CharField(max_length=200)
@@ -21,4 +22,4 @@ class profile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return str(self.user.username)
+        return str(self.username)
